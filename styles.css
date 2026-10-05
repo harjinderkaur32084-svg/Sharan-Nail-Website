@@ -30,7 +30,7 @@
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* --- Semantic theme tokens (flipped by [data-theme="dark"]) --- */
-    --brand-ink: #1b1512;              /* always-dark surfaces: topbar, footer, dark buttons */
+    --brand-ink: #1b1512;              /* always-dark surfaces: footer, dark buttons */
     --surface: #ffffff;                /* cards, panels, form fields */
     --bg: var(--cream);                /* page background */
     --bg-alt: var(--cream-2);          /* alternating section background */
@@ -175,20 +175,6 @@ section { padding: 110px 0; position: relative; }
 }
 .divider.center { margin: 18px auto; }
 
-/* ---------------- Top bar ---------------- */
-.topbar {
-    background: var(--brand-ink);
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.82rem;
-    padding: 10px 0;
-}
-.topbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.topbar-contacts { display: flex; gap: 26px; flex-wrap: wrap; }
-.topbar-item { display: inline-flex; align-items: center; gap: 9px; }
-.topbar-item i { color: var(--gold); }
-.topbar-socials { display: flex; gap: 18px; }
-.topbar-socials a { transition: var(--transition); }
-.topbar-socials a:hover { color: var(--gold); }
 /* ---------------- Navbar ---------------- */
 .navbar {
     position: sticky;
@@ -411,6 +397,26 @@ section { padding: 110px 0; position: relative; }
 }
 .contact-socials a:hover { background: var(--gold); border-color: var(--gold); }
 
+/* ---------------- Map ----------------
+   The iframe is absolutely positioned inside .map-embed so it always
+   fills the column exactly - no fighting with inline height attributes. */
+.map-wrap { margin-top: 60px; }
+.map-card {
+    display: grid; grid-template-columns: 1.25fr 1fr;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md);
+}
+.map-embed { position: relative; min-height: 420px; background: var(--cream-2); }
+.map-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-side { padding: 46px 42px; display: flex; flex-direction: column; justify-content: center; }
+.map-side h3 { font-size: 1.6rem; margin-bottom: 10px; }
+.map-side p { color: var(--muted); margin-bottom: 26px; }
+.map-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+/* Higher specificity than ".contact-item a" so the link keeps the gold accent */
+.contact-item p a.map-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 8px; font-weight: 600; color: var(--gold-deep); }
+.contact-item p a.map-link:hover { color: var(--gold); }
+.footer-contact a:hover { color: var(--gold); }
+
 .contact-form-card {
     background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 42px 38px; box-shadow: var(--shadow-md); border-top: 4px solid var(--gold);
@@ -501,6 +507,9 @@ footer h4 { color: var(--white); font-family: var(--font-body); font-size: 0.8re
     section { padding: 84px 0; }
     .burger { display: block; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .map-card { grid-template-columns: 1fr; }
+    .map-embed { min-height: 320px; }
+    .map-side { padding: 34px 28px; }
     .about-media img { aspect-ratio: 16 / 12; }
     .about-badge { left: 18px; bottom: 18px; }
     .price-card.featured { transform: none; }
@@ -527,9 +536,6 @@ footer h4 { color: var(--white); font-family: var(--font-body); font-size: 0.8re
     .services-grid, .portfolio-grid, .pricing-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .footer-grid { grid-template-columns: 1fr; }
-    .topbar-contacts { gap: 12px; }
-    .topbar { font-size: 0.75rem; }
-    .topbar-socials { display: none; }
     .testimonial-card { flex: 0 0 84%; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .contact-form-card { padding: 32px 24px; }
@@ -539,12 +545,6 @@ footer h4 { color: var(--white); font-family: var(--font-body); font-size: 0.8re
     /* iOS zooms the page when a focused field is under 16px */
     .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
     .form-group input, .form-group select { min-height: 48px; }
-
-    /* Tighter top bar so the header does not eat the screen */
-    .topbar { padding: 8px 0; }
-    .topbar-contacts { gap: 10px 16px; justify-content: center; }
-    .topbar-item { font-size: 0.72rem; }
-    .topbar-item.hide-sm { display: none; }
 
     .hero h1 { margin-bottom: 18px; }
     .hero-badges { gap: 18px; margin-top: 34px; }
@@ -559,6 +559,11 @@ footer h4 { color: var(--white); font-family: var(--font-body); font-size: 0.8re
 @media (max-width: 480px) {
     html { scroll-padding-top: 84px; }
     .container { padding: 0 16px; }
+    .map-wrap { margin-top: 40px; }
+    .map-embed { min-height: 240px; }
+    .map-side { padding: 26px 20px; }
+    .map-side h3 { font-size: 1.3rem; }
+    .map-actions .btn { width: 100%; }
     section { padding: 68px 0; }
     .hero { padding: 84px 0 60px; }
     .hero h1 { font-size: 2.15rem; }
