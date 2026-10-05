@@ -2,7 +2,7 @@
    Sharan Studio - image folder
     ==========================================================================
 
-   Ye 14 files website par lagayi hui hain (resize + crop kar diye gaye hain).
+   Ye 20 files website par lagayi hui hain (resize + crop kar diye gaye hain).
    Puri tarah local - koi external/online image link nahi.
 
      hero.jpg                          1800 x 1012
@@ -13,7 +13,7 @@
      service-bridal-makeup.jpg          800 x  600
      service-party-glam.jpg             800 x  600
      service-hair-styling.jpg           800 x  600
-     gallery-1.jpg .. gallery-6.jpg     900 x  900  (har ek)
+     gallery-1.jpg .. gallery-12.jpg    900 x  900  (har ek)
 
    ---------------------------------------------------------------------
    Original photo se file ka mapping
@@ -21,12 +21,12 @@
    ---------------------------------------------------------------------
      Photo 1   ->  service-nail-extensions.jpg
      Photo 2   ->  service-party-glam.jpg
-     Photo 3   ->  (spare - pastel ombre nails)
+     Photo 3   ->  gallery-7.jpg             (pastel ombre nails)
      Photo 4   ->  gallery-1.jpg             (mehndi + gold tips)
      Photo 5   ->  gallery-6.jpg             (polka dot french)
      Photo 6   ->  service-nail-art.jpg      (leopard print)
      Photo 7   ->  service-spa-manicure.jpg  (pink shimmer)
-     Photo 8   ->  (spare - french tips with blue eye)
+     Photo 8   ->  gallery-8.jpg             (french tips + blue eye)
      Photo 9   ->  hero.jpg  +  service-bridal-makeup.jpg
      Photo 10  ->  gallery-4.jpg             (braided bun + pearls)
      Photo 11  ->  gallery-2.jpg             (half-up + crystal)
@@ -34,10 +34,13 @@
      Photo 13  ->  gallery-5.jpg             (voluminous updo)
      Photo 14  ->  service-hair-styling.jpg  (braided style)
      Photo 15  ->  gallery-3.jpg             (pearl braid)
-     Photo 16  ->  (spare - curly half-up)
-     Photo 17  ->  (spare - braided bun, gold pins)
-     Photo 18  ->  (spare - updo, pearl pins)
-     Photo 19  ->  (spare - bubble ponytail)
+     Photo 16  ->  gallery-9.jpg             (curly half-up twist)
+     Photo 17  ->  gallery-10.jpg            (braided bun, gold pins)
+     Photo 18  ->  gallery-11.jpg            (updo, pearl pins)
+     Photo 19  ->  gallery-12.jpg            (bubble ponytail)
+
+   NOTE: D:\photos ki saari 19 photos ab website par lagayi hui hain.
+   Koi bhi image chhooti nahi hai.
 
    ---------------------------------------------------------------------
    Tips

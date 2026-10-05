@@ -194,6 +194,47 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
+    /* ---------- Theme toggle (day / night) ---------- */
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const syncToggle = (isDark) => {
+        if (!themeBtn) return;
+        themeBtn.setAttribute('aria-pressed', String(isDark));
+        themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        if (themeMeta) themeMeta.setAttribute('content', isDark ? '#14100e' : '#1b1512');
+    };
+
+    if (themeBtn) {
+        syncToggle(root.getAttribute('data-theme') === 'dark');
+
+        themeBtn.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            const next = isDark ? 'light' : 'dark';
+
+            if (next === 'dark') root.setAttribute('data-theme', 'dark');
+            else root.removeAttribute('data-theme');
+
+            syncToggle(next === 'dark');
+            try { localStorage.setItem('sharan-theme', next); } catch (e) { /* private mode */ }
+
+            /* enable the cross-fade only after the first paint */
+            requestAnimationFrame(() => document.body.classList.add('theme-ready'));
+        });
+
+        /* Follow the OS only while the visitor has not chosen a theme */
+        prefersDark.addEventListener('change', (e) => {
+            let stored = null;
+            try { stored = localStorage.getItem('sharan-theme'); } catch (err) { /* ignore */ }
+            if (stored) return;
+            if (e.matches) root.setAttribute('data-theme', 'dark');
+            else root.removeAttribute('data-theme');
+            syncToggle(e.matches);
+        });
+    }
+
     /* ---------- Dynamic footer year ---------- */
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();

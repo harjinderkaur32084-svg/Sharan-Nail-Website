@@ -30,6 +30,18 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+    <script>
+        /* Set theme before first paint so there is no white flash */
+        (function () {
+            try {
+                var saved = localStorage.getItem('sharan-theme');
+                var dark = saved ? saved === 'dark'
+                                 : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+            } catch (e) { /* private mode - fall back to light */ }
+        })();
+    </script>
 </head>
 <body>
 
@@ -38,7 +50,7 @@
         <div class="container">
             <div class="topbar-contacts">
                 <span class="topbar-item"><i class="fas fa-phone-alt"></i> +91 93399 54179</span>
-                <span class="topbar-item"><i class="fas fa-envelope"></i> appointments@sharanstudio.com</span>
+                <span class="topbar-item hide-sm"><i class="fas fa-envelope"></i> appointments@sharanstudio.com</span>
                 <span class="topbar-item"><i class="far fa-clock"></i> Mon – Sat: 10:00am – 8:00pm</span>
             </div>
             <div class="topbar-socials">
@@ -66,6 +78,9 @@
             </nav>
 
             <div class="nav-cta">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i><i class="fas fa-sun" aria-hidden="true"></i>
+                </button>
                 <a href="#contact" class="btn btn-gold nav-book">Book Now</a>
                 <button class="burger" id="burger" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -278,6 +293,30 @@
                 <div class="portfolio-item reveal">
                     <img src="images/gallery-6.jpg" alt="Soft pink manicure with black polka dot French tips" loading="lazy">
                     <div class="portfolio-overlay"><small>Manicure</small><h4>Polka Dream</h4></div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="images/gallery-7.jpg" alt="Pastel ombre manicure with multicoloured French tips and tiny gold accents" loading="lazy">
+                    <div class="portfolio-overlay"><small>Manicure</small><h4>Pastel Pop</h4></div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="images/gallery-8.jpg" alt="Pink and white classic French manicure finished with a blue swirl accent nail" loading="lazy">
+                    <div class="portfolio-overlay"><small>Manicure</small><h4>Blue Eyeful</h4></div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="images/gallery-9.jpg" alt="Half-up hairstyle with a twisted knot and voluminous loose curls" loading="lazy">
+                    <div class="portfolio-overlay"><small>Hair Styling</small><h4>Twist &amp; Curl</h4></div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="images/gallery-10.jpg" alt="Sleek braided ponytail with a braided crown, finished with gold hair pins" loading="lazy">
+                    <div class="portfolio-overlay"><small>Hair Styling</small><h4>Gold Braid</h4></div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="images/gallery-11.jpg" alt="Elegant bridal updo woven from braids and set with white pearl pins" loading="lazy">
+                    <div class="portfolio-overlay"><small>Bridal</small><h4>Pearl Twist Updo</h4></div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <img src="images/gallery-12.jpg" alt="Braided crown flowing into a bubble ponytail decorated with pearl pins" loading="lazy">
+                    <div class="portfolio-overlay"><small>Bridal</small><h4>Bubble Ponytail</h4></div>
                 </div>
             </div>
         </div>
